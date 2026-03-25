@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>个人简介 | 张星河</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'ui-sans-serif', 'system-ui', 'Segoe UI', 'PingFang SC', 'Microsoft YaHei']
+            },
+            boxShadow: {
+              glow: '0 12px 40px rgba(59,130,246,.25)'
+            },
+            keyframes: {
+              float: {
+                '0%, 100%': { transform: 'translateY(0px)' },
+                '50%': { transform: 'translateY(-8px)' }
+              },
+              fadeUp: {
+                '0%': { opacity: '0', transform: 'translateY(18px)' },
+                '100%': { opacity: '1', transform: 'translateY(0)' }
+              }
+            },
+            animation: {
+              float: 'float 4s ease-in-out infinite',
+              fadeUp: 'fadeUp .8s ease-out forwards'
+            }
+          }
+        }
+      };
+    </script>
+  </head>
+  <body class="min-h-screen bg-gradient-to-br from-slate-950 via-indigo-950 to-sky-900 text-slate-100 antialiased">
+    <main class="relative flex min-h-screen items-center justify-center overflow-hidden px-4 py-10">
+      <div class="pointer-events-none absolute -left-24 top-0 h-72 w-72 rounded-full bg-fuchsia-500/20 blur-3xl"></div>
+      <div class="pointer-events-none absolute -right-20 bottom-0 h-80 w-80 rounded-full bg-cyan-400/20 blur-3xl"></div>
+
+      <section id="card" class="w-full max-w-3xl rounded-3xl border border-white/15 bg-white/10 p-6 shadow-glow backdrop-blur-xl sm:p-10">
+        <div class="grid items-center gap-8 md:grid-cols-[180px_1fr]">
+          <div class="reveal mx-auto text-center md:mx-0">
+            <div class="mx-auto flex h-36 w-36 animate-float items-center justify-center rounded-full border border-white/20 bg-gradient-to-br from-cyan-300 to-violet-400 text-5xl shadow-2xl md:mx-0">👨‍💻</div>
+            <p class="mt-4 text-sm text-slate-200/85">头像位置（可替换为你的照片）</p>
+          </div>
+
+          <div>
+            <p class="reveal inline-block rounded-full border border-cyan-300/40 bg-cyan-300/10 px-3 py-1 text-xs tracking-wide text-cyan-200">PORTFOLIO</p>
+            <h1 class="reveal mt-3 text-3xl font-bold leading-tight sm:text-4xl">张星河</h1>
+            <h2 class="reveal mt-2 text-lg text-slate-200">前端工程师 · UI 体验设计师</h2>
+            <p class="reveal mt-4 text-sm leading-7 text-slate-200/90 sm:text-base">
+              我专注于构建现代化 Web 产品，擅长把复杂需求转化为清晰、好用且有质感的界面。热爱性能优化、交互细节与可维护性。
+            </p>
+
+            <div class="reveal mt-5 flex flex-wrap gap-2">
+              <span class="rounded-full border border-white/25 bg-white/10 px-3 py-1 text-xs">HTML5</span>
+              <span class="rounded-full border border-white/25 bg-white/10 px-3 py-1 text-xs">CSS3 / Tailwind CSS</span>
+              <span class="rounded-full border border-white/25 bg-white/10 px-3 py-1 text-xs">JavaScript (ES6+)</span>
+              <span class="rounded-full border border-white/25 bg-white/10 px-3 py-1 text-xs">Vue / React</span>
+              <span class="rounded-full border border-white/25 bg-white/10 px-3 py-1 text-xs">Node.js</span>
+            </div>
+
+            <div class="reveal mt-7 flex flex-wrap gap-3">
+              <a href="https://github.com" target="_blank" rel="noreferrer" class="rounded-xl border border-white/25 bg-white/10 px-4 py-2 text-sm transition hover:-translate-y-0.5 hover:bg-white/20">GitHub</a>
+              <a href="https://www.linkedin.com" target="_blank" rel="noreferrer" class="rounded-xl border border-white/25 bg-white/10 px-4 py-2 text-sm transition hover:-translate-y-0.5 hover:bg-white/20">LinkedIn</a>
+              <a href="https://x.com" target="_blank" rel="noreferrer" class="rounded-xl border border-white/25 bg-white/10 px-4 py-2 text-sm transition hover:-translate-y-0.5 hover:bg-white/20">X / Twitter</a>
+              <a href="mailto:hello@example.com" class="rounded-xl bg-gradient-to-r from-cyan-400 to-violet-500 px-4 py-2 text-sm font-semibold text-slate-950 transition hover:brightness-110">联系我</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      const reveals = document.querySelectorAll('.reveal');
+      reveals.forEach((el, i) => {
+        el.style.opacity = 0;
+        el.style.animationDelay = `${i * 120}ms`;
+        el.classList.add('animate-fadeUp');
+      });
+
+      const card = document.getElementById('card');
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const rx = ((y / rect.height) - 0.5) * -4;
+        const ry = ((x / rect.width) - 0.5) * 4;
+        card.style.transform = `perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg)`;
+      });
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = 'perspective(900px) rotateX(0deg) rotateY(0deg)';
+      });
+    </script>
+  </body>
+</html>
