@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>单词大冒险 · 杭州小学英语</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="bg-decor decor-1"></div>
+  <div class="bg-decor decor-2"></div>
+  <div class="app">
+    <header class="header card">
+      <h1>🎈 单词大冒险</h1>
+      <p>杭州小学英语 · 中英配对挑战</p>
+    </header>
+
+    <section id="start-screen" class="screen card active">
+      <h2>准备开始</h2>
+      <p>每局共 <strong>10</strong> 个关卡，每关 <strong>5</strong> 题，总计 50 题。</p>
+      <p>倒计时结束或全部答完即结算，快来冲击最高分！</p>
+      <div class="stats-grid">
+        <div class="stat-item"><span>最高分</span><strong id="high-score">0</strong></div>
+        <div class="stat-item"><span>总题数</span><strong>50</strong></div>
+        <div class="stat-item"><span>总时长</span><strong>300秒</strong></div>
+      </div>
+      <button id="start-btn" class="btn primary">开始游戏</button>
+      <p class="hint">玩法：根据中文词义，选择正确英文单词。</p>
+    </section>
+
+    <section id="game-screen" class="screen card">
+      <div class="top-bar">
+        <div class="pill">关卡 <span id="level">1</span>/10</div>
+        <div class="pill">题目 <span id="question">1</span>/5</div>
+        <div class="pill">分数 <span id="score">0</span></div>
+        <div class="pill timer">⏱ <span id="timer">300</span>s</div>
+      </div>
+
+      <div class="progress-wrap">
+        <div id="progress" class="progress"></div>
+      </div>
+
+      <div class="question-box">
+        <h2 id="prompt-cn">点击开始后出题</h2>
+      </div>
+
+      <div id="options" class="options"></div>
+
+      <div id="feedback" class="feedback" aria-live="polite"></div>
+
+      <button id="next-btn" class="btn secondary" disabled>下一题</button>
+    </section>
+
+    <section id="result-screen" class="screen card">
+      <h2>🎉 本局结束</h2>
+      <p>本局得分：<strong id="final-score">0</strong></p>
+      <p>答对题数：<strong id="correct-count">0</strong> / 50</p>
+      <p>最高积分：<strong id="final-high-score">0</strong></p>
+      <button id="restart-btn" class="btn primary">再来一局</button>
+    </section>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
